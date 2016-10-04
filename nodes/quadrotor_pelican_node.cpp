@@ -1,7 +1,9 @@
+// ROS
 #include "ros/ros.h"
-#include "std_msgs/Int8MultiArray.h"
+#include "std_msgs/Int32MultiArray.h"
 #include "geometry_msgs/Vector3.h"
 
+// Libraries
 #include "dynamic_model/quadrotor_pelican.h"
 
 dynamic_model::QuadrotorPelican pelican;
@@ -20,19 +22,19 @@ int main(int argc, char **argv)
   ros::NodeHandle node;
 
   // Publishers
-  ros::Publisher pub_lin_pos = node.advertise<geometry_msgs::Vector3>("/pelican/linear_position", 1);
-  ros::Publisher pub_lin_vel = node.advertise<geometry_msgs::Vector3>("/pelican/linear_velocity", 1);
-  ros::Publisher pub_lin_acc = node.advertise<geometry_msgs::Vector3>("/pelican/linear_acceleration", 1);
+  ros::Publisher pub_lin_pos = node.advertise<geometry_msgs::Vector3>("linear_position", 1);
+  ros::Publisher pub_lin_vel = node.advertise<geometry_msgs::Vector3>("linear_velocity", 1);
+  ros::Publisher pub_lin_acc = node.advertise<geometry_msgs::Vector3>("linear_acceleration", 1);
 
-  ros::Publisher pub_ang_pos = node.advertise<geometry_msgs::Vector3>("/pelican/angular_position", 1);
-  ros::Publisher pub_ang_vel = node.advertise<geometry_msgs::Vector3>("/pelican/angular_velocity", 1);
-  ros::Publisher pub_ang_acc = node.advertise<geometry_msgs::Vector3>("/pelican/angular_acceleration", 1);
+  ros::Publisher pub_ang_pos = node.advertise<geometry_msgs::Vector3>("angular_position", 1);
+  ros::Publisher pub_ang_vel = node.advertise<geometry_msgs::Vector3>("angular_velocity", 1);
+  ros::Publisher pub_ang_acc = node.advertise<geometry_msgs::Vector3>("angular_acceleration", 1);
 
   // Subscribers
-  ros::Subscriber sub_cmd_motor_speed = node.subscribe("/pelican/cmd_motor_speed", 1, cmdMotorSpeedCallback);
+  ros::Subscriber sub_cmd_motor_speed = node.subscribe("cmd_motor_speed", 1, cmdMotorSpeedCallback);
 
   // Loop rate
-  int rate = 100;
+  int rate = 1000;
   ros::Rate loop_rate(rate);
 
   // Dynamic model instance

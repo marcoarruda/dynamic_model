@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   std_msgs
   tf
+  labrom_control
 )
 
 ## System dependencies are found with CMake's conventions
@@ -132,14 +133,16 @@ add_library(${PROJECT_NAME}
 # add_dependencies(dynamic_model ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-add_executable(quadrotor_node nodes/quadrotor_node.cpp)
+add_executable(quadrotor_pelican_node nodes/quadrotor_pelican_node.cpp)
+add_executable(controller_node nodes/controller_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(dynamic_model_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(quadrotor_node ${catkin_LIBRARIES} ${PROJECT_NAME})
+target_link_libraries(quadrotor_pelican_node ${catkin_LIBRARIES} ${PROJECT_NAME})
+target_link_libraries(controller_node ${catkin_LIBRARIES} ${PROJECT_NAME})
 
 #############
 ## Install ##

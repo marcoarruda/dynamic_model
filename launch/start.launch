@@ -1,0 +1,5 @@
+<launch>
+  <!-- Pelican Node-->
+  <node pkg="dynamic_model" type="quadrotor_pelican_node" name="pelican1" />
+  <node pkg="dynamic_model" type="controller_node" name="controller1" output="screen" />
+</launch>
