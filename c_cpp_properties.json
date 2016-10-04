@@ -1,0 +1,19 @@
+{
+  "clang_format": {
+    "fallback-style": "",
+    "sort-includes": false,
+    "style": ""
+  },
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/opt/ros/indigo/include"
+      ],
+      "name": ""
+    }
+  ]
+}
