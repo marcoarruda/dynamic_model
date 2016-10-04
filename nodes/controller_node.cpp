@@ -36,11 +36,11 @@ int main(int argc, char **argv)
   int rate = 50;
   ros::Rate loop_rate(rate);
 
-  controllers::pid::Simple cntlr("height_controller", 50, 0.01, 15, 5);
+  controllers::pid::Simple cntlr("height_controller", 50, 0, 10, 0);
 
   while (ros::ok())
   {
-    motor_speed = 65 + cntlr.LoopOnce(0, linear_position.z, 0, linear_velocity.z);
+    int motor_speed = 65 + cntlr.LoopOnce(0, linear_position.z, 0, linear_velocity.z);
     // ... push values to array
     motor_speed_array.data.clear();
     for (int i = 0; i < 4; i++)
