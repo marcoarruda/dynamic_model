@@ -58,10 +58,21 @@ void Quadrotor::setProperties(float b, float d, float jr, float l, float m, geom
 };
 void Quadrotor::setMotorSpeed(const std_msgs::Int32MultiArray::ConstPtr &msg)
 {
-    w_[0] = msg->data[0];
-    w_[1] = msg->data[1];
-    w_[2] = msg->data[2];
-    w_[3] = msg->data[3];
+    for (int i = 0; i < 4; i++)
+    {
+        if (msg->data[i] > 2000)
+        {
+            w_[i] = 2000;
+        }
+        else if (msg->data[i] < 0)
+        {
+            w_[i] = 0;
+        }
+        else
+        {
+            w_[i] = msg->data[i];
+        }
+    }
 };
 void Quadrotor::calculateState(int update_rate)
 {

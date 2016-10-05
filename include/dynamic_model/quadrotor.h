@@ -6,13 +6,18 @@ namespace dynamic_model
 class Quadrotor
 {
 public:
+  // linear state
   geometry_msgs::Vector3 position_;
   geometry_msgs::Vector3 linear_velocity_;
   geometry_msgs::Vector3 linear_acceleration_;
 
+  // angular state
   geometry_msgs::Vector3 angles_;
   geometry_msgs::Vector3 angular_velocity_;
   geometry_msgs::Vector3 angular_acceleration_;
+
+  // rotor speed
+  float w_[4];
 
   Quadrotor();
   Quadrotor(float b, float d, float jr, float l, float m, geometry_msgs::Vector3 i);
@@ -33,8 +38,6 @@ private:
   float m_;
   // inertia moment (Kg.m^2)
   geometry_msgs::Vector3 i_;
-  // rotor speed
-  float w_[4];
 
 protected:
   void setProperties(float b, float d, float jr, float l, float m, geometry_msgs::Vector3 i);

@@ -36,7 +36,7 @@ int main(int argc, char **argv)
   int rate = 50;
   ros::Rate loop_rate(rate);
 
-  controllers::pid::Simple cntlr("height_controller", 50, 0, 10, 0);
+  controllers::pid::Simple cntlr("height_controller", 20, 0, 10, 0);
 
   while (ros::ok())
   {
