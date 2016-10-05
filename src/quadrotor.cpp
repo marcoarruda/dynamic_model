@@ -60,9 +60,9 @@ void Quadrotor::setMotorSpeed(const std_msgs::Int32MultiArray::ConstPtr &msg)
 {
     for (int i = 0; i < 4; i++)
     {
-        if (msg->data[i] > 2000)
+        if (msg->data[i] > 200)
         {
-            w_[i] = 2000;
+            w_[i] = 200;
         }
         else if (msg->data[i] < 0)
         {

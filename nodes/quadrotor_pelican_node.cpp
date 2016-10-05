@@ -29,8 +29,9 @@ bool srvSetPos(dynamic_model::SetVector3::Request &req,
 
   return true;
 }
+
 bool srvSetAng(dynamic_model::SetVector3::Request &req,
-               dynamic_model::SetVector3::Response res)
+               dynamic_model::SetVector3::Response &res)
 {
   pelican.angles_.x = req.x;
   pelican.angles_.y = req.y;

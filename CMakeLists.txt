@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   tf
   labrom_control
+  visualization_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -134,6 +135,7 @@ add_library(${PROJECT_NAME}
 ## Declare a C++ executable
 add_executable(quadrotor_pelican_node nodes/quadrotor_pelican_node.cpp)
 add_executable(controller_node nodes/controller_node.cpp)
+add_executable(marker_publisher_node nodes/marker_publisher_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -142,6 +144,7 @@ add_executable(controller_node nodes/controller_node.cpp)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(quadrotor_pelican_node ${catkin_LIBRARIES} ${PROJECT_NAME})
 target_link_libraries(controller_node ${catkin_LIBRARIES} ${PROJECT_NAME})
+target_link_libraries(marker_publisher_node ${catkin_LIBRARIES} ${PROJECT_NAME})
 
 #############
 ## Install ##
