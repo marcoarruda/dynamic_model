@@ -76,17 +76,17 @@ void Quadrotor::setMotorSpeed(const std_msgs::Int32MultiArray::ConstPtr &msg)
 };
 void Quadrotor::calculateState(int update_rate)
 {
-    position_.x += linear_velocity_.x / update_rate;
-    position_.y += linear_velocity_.y / update_rate;
-    position_.z += linear_velocity_.z / update_rate;
+    position_.x += (linear_velocity_.x / update_rate) + (linear_acceleration_.x / pow(update_rate, 2));
+    position_.y += (linear_velocity_.y / update_rate) + (linear_acceleration_.y / pow(update_rate, 2));
+    position_.z += (linear_velocity_.z / update_rate) + (linear_acceleration_.z / pow(update_rate, 2));
 
     linear_velocity_.x += linear_acceleration_.x / update_rate;
     linear_velocity_.y += linear_acceleration_.y / update_rate;
     linear_velocity_.z += linear_acceleration_.z / update_rate;
 
-    angles_.x += angular_velocity_.x / update_rate;
-    angles_.y += angular_velocity_.y / update_rate;
-    angles_.z += angular_velocity_.z / update_rate;
+    angles_.x += angular_velocity_.x / update_rate + (angular_acceleration_.x / pow(update_rate, 2));
+    angles_.y += angular_velocity_.y / update_rate + (angular_acceleration_.y / pow(update_rate, 2));
+    angles_.z += angular_velocity_.z / update_rate + (angular_acceleration_.z / pow(update_rate, 2));
 
     angular_velocity_.x += angular_acceleration_.x / update_rate;
     angular_velocity_.y += angular_acceleration_.y / update_rate;
